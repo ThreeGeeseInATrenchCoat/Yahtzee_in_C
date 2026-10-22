@@ -688,7 +688,7 @@ void print_scorecard(int scorecard[]) {
 */
 
 void reset_scorecard(int scorecard[]) {
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 6; i++) {
 		scorecard[i] = -1;
 	}
 
