@@ -155,6 +155,8 @@ void count_rolls(int arr[], int how_many[]) {
 
 	for (int i = 0; i < 5; i++) {
 		how_many[arr[i] - 1]++;				//EVIL EVIL EVIL EVIL EVIL EVIL EIVL
+		//for array {1, 3, 4, 4, 3}
+		//how_many = {1, 0, 2, 2, 0, 0}
 	}
 }
 
@@ -195,27 +197,36 @@ void count_rolls(int arr[], int how_many[]) {
 */
 
 void reroll(int arr[]) {
-	char huh = NULL;
-	int how_many, what;
+	char ch = NULL, how_many = NULL;
 
 	//the 2 rerolls
 	for (int i = 0; i < 2; i++) {
-		do {
-			printf("reroll dice? (y/n): ");
-			scanf(" %c", &huh);
-		} while (huh != 'y' && huh != 'n');
+		printf("reroll dice? (y/n): \n");
 
-		if (huh == 'y') {
+		do {
+			ch = _getch();
+		} while (ch != 'y' && ch != 'n');
+
+		if (ch == 'y') {
 
 			//how many dice to reroll
-			printf("how many dice to reroll: ");
-			scanf("%d", &how_many);
+			printf("how many dice to reroll: \n");
+			//scanf("%d", &how_many);
+
+			do {
+				how_many = _getch() - '0';
+			} while (how_many < 1 || how_many > 5);
 
 			//for how many dice, prompt one at a time, hiding result to prevent exploits
 			for (int i = 0; i < how_many; i++) {
-				printf("input a die to reroll (1-5): ");
-				scanf("%d", &what);
-				arr[what - 1] = (rand() % 6) + 1;
+
+				printf("input a die to reroll (1-5): \n");
+				
+				do {
+					ch = _getch() - '0';
+				} while (ch < 1 || ch > 5);
+
+				arr[(ch - 1)] = (rand() % 6) + 1;
 			}
 			//print new rolls
 			print_array(arr, 5);
@@ -363,8 +374,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 	do {
 		//sum of 1s-6s
 		if (scorecard[0] == -1) {
-			printf("count as sum of 1s(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as sum of 1s(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				scorecard[0] = how_many[0] * 1;
 				choice = 1;
@@ -372,8 +387,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 		}
 
 		if (scorecard[1] == -1 && choice == 0) {
-			printf("count as sum of 2s(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as sum of 2s(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				scorecard[1] = how_many[1] * 2;
 				choice = 1;
@@ -381,8 +400,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 		}
 
 		if (scorecard[2] == -1 && choice == 0) {
-			printf("count as sum of 3s(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as sum of 3s(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				scorecard[2] = how_many[2] * 3;
 				choice = 1;
@@ -390,8 +413,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 		}
 
 		if (scorecard[3] == -1 && choice == 0) {
-			printf("count as sum of 4s(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as sum of 4s(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				scorecard[3] = how_many[3] * 4;
 				choice = 1;
@@ -399,8 +426,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 		}
 
 		if (scorecard[4] == -1 && choice == 0) {
-			printf("count as sum of 5s(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as sum of 5s(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				scorecard[4] = how_many[4] * 5;
 				choice = 1;
@@ -408,8 +439,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 		}
 
 		if (scorecard[5] == -1 && choice == 0) {
-			printf("count as sum of 6s(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as sum of 6s(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				scorecard[5] = how_many[5] * 6;
 				choice = 1;
@@ -419,8 +454,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 
 		//the rest of the scorecard
 		if (scorecard[7] == -1 && choice == 0) {
-			printf("count as three-of-a-kind(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as three-of-a-kind(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				if (scores_earned[0]) {
 					scorecard[7] = add_array(rolls, 5);
@@ -432,8 +471,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 			}
 		}
 		if (scorecard[8] == -1 && choice == 0) {
-			printf("count as four-of-a-kind(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as four-of-a-kind(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				if (scores_earned[1]) {
 					scorecard[8] = add_array(rolls, 5);
@@ -445,8 +488,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 			}
 		}
 		if (scorecard[9] == -1 && choice == 0) {
-			printf("count as full house(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as full house(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				if (scores_earned[2]) {
 					scorecard[9] = 25;
@@ -458,8 +505,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 			}
 		}
 		if (scorecard[10] == -1 && choice == 0) {
-			printf("count as small straight(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as small straight(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				if (scores_earned[3]) {
 					scorecard[10] = 30;
@@ -471,8 +522,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 			}
 		}
 		if (scorecard[11] == -1 && choice == 0) {
-			printf("count as large straight(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as large straight(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				if (scores_earned[4]) {
 					scorecard[11] = 40;
@@ -484,8 +539,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 			}
 		}
 		if (scorecard[12] == -1 && choice == 0) {
-			printf("count as yahtzee(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as yahtzee(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				if (scores_earned[5]) {
 					scorecard[12] = 50;
@@ -497,8 +556,12 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 			}
 		}
 		if (scorecard[13] == -1 && choice == 0) {
-			printf("count as chance(y/n)");
-			scanf(" %c", &booboobaba);
+			printf("count as chance(y/n)\n");
+
+			do {
+				booboobaba = _getch();
+			} while (booboobaba != 'y' && booboobaba != 'n');
+
 			if (booboobaba == 'y') {
 				scorecard[13] = add_array(rolls, 5);
 				choice = 1;
@@ -538,7 +601,6 @@ void print_scorecard(int scorecard[]) {
 	if (scorecard[2] == -1) {
 		printf("no value	sum of 3s\n", scorecard[2]);
 	}
-
 	else {
 		printf("%d		sum of 3s\n", scorecard[2]);
 	}
