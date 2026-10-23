@@ -346,7 +346,9 @@ int welcome_script() {
 int add_array(int arr[], int size) {
 	int result = 0;
 	for (int i = 0; i < size; i++) {
-		result += arr[i];
+		if (arr[i] != -1) {					//for the scorecard, -1 is used as a faux NULL value, so we dont want to add it to the total, shouldnt interfere with other arrays, but we'll see
+			result += arr[i];
+		}
 	}
 	return result;
 }
