@@ -231,7 +231,7 @@ void reroll(int arr[], int arr2[], int scores_earned[]) {
 			//print new rolls
 			print_array(arr, 5);
 
-			if (i != 1) {
+			if (i != 1 && ch == 'y') {
 				count_rolls(arr, arr2);
 				what_kind_of_score(arr2, scores_earned);
 			}
