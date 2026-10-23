@@ -2,7 +2,6 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <math.h>   //i imagine ill need this
 #include <stdlib.h>
 #include <time.h>
 #include <conio.h>  // needed for press_1_to_roll and welcome_script
