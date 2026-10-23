@@ -56,7 +56,10 @@ int main(VOID) {
 			printf("rolled: ");
 			print_array(rolls, 5);
 
-			reroll(rolls);
+			count_rolls(rolls, how_many);
+			what_kind_of_score(how_many, scores_earned);
+
+			reroll(rolls, how_many, scores_earned);
 
 			count_rolls(rolls, how_many);
 			what_kind_of_score(how_many, scores_earned);
@@ -69,7 +72,6 @@ int main(VOID) {
 			system("cls");
 		}
 		player_point_total[i] = add_array(scorecard, 15);
-		printf("point total: %d\n", player_point_total[i]);
 		reset_scorecard(scorecard);
 	}
 
