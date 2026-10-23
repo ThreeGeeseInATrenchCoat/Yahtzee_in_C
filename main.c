@@ -57,12 +57,11 @@ int main(VOID) {
 			print_array(rolls, 5);
 
 			count_rolls(rolls, how_many);
-			what_kind_of_score(how_many, scores_earned);
+			what_kind_of_score(how_many, scores_earned, scorecard);
 
-			reroll(rolls, how_many, scores_earned);
+			//count rolls and what kind of score are in reroll, no need to include in main
+			reroll(rolls, how_many, scores_earned, scorecard);
 
-			count_rolls(rolls, how_many);
-			what_kind_of_score(how_many, scores_earned);
 			add_to_card(scorecard, scores_earned, rolls, how_many);
 
 			system("cls");
@@ -85,5 +84,4 @@ int main(VOID) {
 	else {
 		printf("IT'S A TIE!\n");
 	}
-
 }
