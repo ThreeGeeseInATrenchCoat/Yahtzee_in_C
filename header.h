@@ -21,7 +21,7 @@ void press_1_to_roll();
 void count_rolls(int arr[], int how_many[]);
 //int reroll_or_not();
 //void reroll(int arr[]);
-void reroll(int arr[]);
+void reroll(int arr[], int arr2[], int scores_earned[]);
 void what_kind_of_score(int arr[], int got_what[]);
 void print_array(int arr[], int size);
 int welcome_script();
