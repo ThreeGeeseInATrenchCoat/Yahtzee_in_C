@@ -460,6 +460,7 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 
 
 		//the rest of the scorecard
+		//if the player hasnt scored in a category, and they havent chosen a category yet, prompt them to choose it
 		if (scorecard[7] == -1 && choice == 0) {
 			printf("count as three-of-a-kind(y/n)\n");
 
@@ -467,6 +468,7 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 				booboobaba = _getch();
 			} while (booboobaba != 'y' && booboobaba != 'n');
 
+			//if the player chooses to score in that category, check if they earned it, and if so, add the score to the scorecard, otherwise set to 0
 			if (booboobaba == 'y') {
 				if (scores_earned[0]) {
 					scorecard[7] = add_array(rolls, 5);
