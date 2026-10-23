@@ -196,7 +196,7 @@ void count_rolls(int arr[], int how_many[]) {
 	date created: 10/21/2026
 */
 
-void reroll(int arr[]) {
+void reroll(int arr[], int arr2[], int scores_earned[]) {
 	char ch = NULL, how_many = NULL;
 
 	//the 2 rerolls
@@ -230,6 +230,11 @@ void reroll(int arr[]) {
 			}
 			//print new rolls
 			print_array(arr, 5);
+
+			if (i != 1) {
+				count_rolls(arr, arr2);
+				what_kind_of_score(arr2, scores_earned);
+			}
 		}
 		//if player said no
 		else {
@@ -277,7 +282,7 @@ void what_kind_of_score(int arr[], int got_what[]) {
 		got_what[3] = 1;
 	}
 	if (memcmp(arr, long_straight_low, 6 * sizeof(int)) == 0 || memcmp(arr, long_straight_high, 6 * sizeof(int)) == 0) {
-		printf("you have a large straight");
+		printf("you have a large straight\n");
 		got_what[4] = 1;
 	}
 	//back to easy
@@ -678,7 +683,10 @@ void print_scorecard(int scorecard[]) {
 	}
 	
 	printf("%d		yahtzee bonus\n", scorecard[14]);
+
+	printf("%d		total score\n", add_array(scorecard, 15));
 }
+
 
 /*
 	function name: reset_scorecard
