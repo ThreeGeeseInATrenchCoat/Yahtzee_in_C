@@ -15,11 +15,10 @@ void bubble_sort(int arr[], int size);
 int sequential_search(int arr[], int size, int target);
 int binary_search(int arr[], int left, int right, int target);
 
+//game functions
 void roll_dice(int arr[]);
 void press_1_to_roll();
 void count_rolls(int arr[], int how_many[]);
-//int reroll_or_not();
-//void reroll(int arr[]);
 void reroll(int arr[], int arr2[], int scores_earned[], int scorecard[]);
 void what_kind_of_score(int arr[], int got_what[], int scorecard[]);
 void print_array(int arr[], int size);

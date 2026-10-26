@@ -73,38 +73,6 @@ int sequential_search(int arr[], int size, int target) {
 	return 0;
 }
 
-/*
-	function name: binary_search
-	function description: searches an array for a target and returns the index
-	preconditions: a sorted array of at least 2 elements
-	date created: 10/19/2026
-	time complexities:
-		worst case: O(nlogn)
-		best case: O(1)
-		average case: O(nlogn)
-*/
-
-int binary_search(int arr[], int left, int right, int target) {
-	int mid = left + (right - left) / 2;
-
-	if (left > right) {
-		printf("ERROR!\n Target %d not found in list", target);
-		return -1;
-	}
-
-	if (arr[mid] == target) {
-		return mid;
-	}
-	else if (arr[mid] > target) {
-		//printf("not %d\n", arr[mid]);
-		return binary_search(arr, left, mid - 1, target);
-	}
-	else {
-		//printf("not %d\n", arr[mid]);
-		return binary_search(arr, mid + 1, right, target);
-	}
-}
-
 //the game functions
 
 /*
@@ -114,11 +82,18 @@ int binary_search(int arr[], int left, int right, int target) {
 	date created: 10/20/2026
 */
 
-void roll_dice(int arr[]) {
+void roll_dice(int arr[], int how_many[], int scores_earned[], int scorecard[]) {
+
+	press_1_to_roll();
+
 	for (int i = 0; i < 5; i++) {
 		arr[i] = (rand() % 6) + 1;
 	}
 	bubble_sort(arr, 5);
+	count_rolls(arr, how_many);
+	what_kind_of_score(how_many, scores_earned, scorecard);
+	printf("rolled: ");
+	print_array(arr, 5);
 }
 
 /*
@@ -159,35 +134,6 @@ void count_rolls(int arr[], int how_many[]) {
 		//how_many = {1, 0, 2, 2, 0, 0}
 	}
 }
-
-//redundant, mushed into one function, i just dont like deleting things
-
-//int reroll_or_not() {
-//	char huh = NULL;
-//	do {
-//		printf("reroll dice? (y/n): ");
-//		scanf(" %c", &huh);
-//	} while (huh != 'y' && huh != 'n');
-//
-//	if (huh == 'y') {
-//		return 1;
-//	}
-//	else {
-//		return 0;
-//	}
-//}
-//
-//void reroll(int arr[]) {
-//	int how_many, what;
-//	printf("how many dice to reroll: ");
-//	scanf("%d", &how_many);
-//
-//	for (int i = 0; i < how_many; i++) {
-//		printf("input a die to reroll (1-5): ");
-//		scanf("%d", &what);
-//		arr[what - 1] = (rand() % 6) + 1;
-//	}
-//}
 
 /*
 	function name: reroll
@@ -231,6 +177,7 @@ void reroll(int arr[], int arr2[], int scores_earned[], int scorecard[]) {
 			//print new rolls
 			print_array(arr, 5);
 
+			//this feels wrong but in all of my testing its worked
 			count_rolls(arr, arr2);
 			what_kind_of_score(arr2, scores_earned, scorecard);
 
@@ -338,7 +285,7 @@ int welcome_script() {
 		ch = _getch();
 	} while (ch != '1' && ch != '2' && ch != '3');
 
-	//ascii bullshit
+	//ascii math
 	ch -= '0';
 	return ch;
 }
@@ -594,6 +541,7 @@ void add_to_card(int scorecard[], int scores_earned[], int rolls[], int how_many
 */
 
 void print_scorecard(int scorecard[]) {
+	system("cls");
 
 	printf("SCORECARD\n"
 		"-------------------\n"
@@ -696,6 +644,9 @@ void print_scorecard(int scorecard[]) {
 	printf("%d		yahtzee bonus\n", scorecard[14]);
 
 	printf("%d		total score\n", add_array(scorecard, 15));
+
+	system("pause");
+	system("cls");
 }
 
 

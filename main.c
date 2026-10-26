@@ -50,25 +50,13 @@ int main(VOID) {
 
 			printf("turn %d\n", j);
 
-			press_1_to_roll();
-			roll_dice(rolls);
+			roll_dice(rolls, how_many, scores_earned, scorecard);
 
-			printf("rolled: ");
-			print_array(rolls, 5);
-
-			count_rolls(rolls, how_many);
-			what_kind_of_score(how_many, scores_earned, scorecard);
-
-			//count rolls and what kind of score are in reroll, no need to include in main
 			reroll(rolls, how_many, scores_earned, scorecard);
 
 			add_to_card(scorecard, scores_earned, rolls, how_many);
 
-			system("cls");
 			print_scorecard(scorecard);
-
-			system("pause");
-			system("cls");
 		}
 		player_point_total[i] = add_array(scorecard, 15);
 		reset_scorecard(scorecard);
