@@ -90,10 +90,10 @@ void roll_dice(int arr[], int how_many[], int scores_earned[], int scorecard[]) 
 		arr[i] = (rand() % 6) + 1;
 	}
 	bubble_sort(arr, 5);
-	count_rolls(arr, how_many);
-	what_kind_of_score(how_many, scores_earned, scorecard);
 	printf("rolled: ");
 	print_array(arr, 5);
+	count_rolls(arr, how_many);
+	what_kind_of_score(how_many, scores_earned, scorecard);
 }
 
 /*
